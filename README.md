@@ -1,4 +1,2 @@
-# demekz
-# demekz
-# test
-# test\ adada: adada
+Документация находится в docs
+Диаграммы в diagrams

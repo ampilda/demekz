@@ -3,6 +3,15 @@
 import os
 import sys
 
+#скрипт для создания директории бэкапа и сохранения в него базы данных при каждом запуске manage.py
+def backup():
+    if not os.path.exists("backup"):
+        os.popen("mkdir backup")
+    
+    if sys.platform == "win32":
+        os.popen("copy database.db backup\\")
+    else:
+        os.popen("cp database.db backup/")
 
 def main():
     """Run administrative tasks."""
@@ -19,4 +28,5 @@ def main():
 
 
 if __name__ == '__main__':
+    backup()
     main()
