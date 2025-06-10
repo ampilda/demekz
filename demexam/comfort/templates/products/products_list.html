@@ -1,0 +1,131 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Комфорт</title>
+    <link rel="icon" href="{% static 'images/comfort.ico' %}" type="image/x-icon">
+    <style>
+        body {
+            font-family: Candara, regular;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            background-color: #F4E8D3;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h2 {
+            margin: 0;
+            font-size: 20px;
+        }
+
+        .logo {
+            height: 40px;
+        }
+
+        .nav-button a {
+            text-decoration: none;
+            background-color: #d2dfff;
+            color: white;
+            padding: 8px 14px;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: background-color 0.3s ease;
+        }
+
+        .nav-button a:hover {
+            background-color: #355cbd;
+        }
+
+        .content-wrapper {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .main-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .products-card {
+            display: flex;
+            justify-content: space-between;
+            border: 1px solid #ccc;
+            padding: 15px;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+            max-width: 800px;
+            width: 100%;
+        }
+
+        .products-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .get_time {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #355CBD;
+            align-self: center;
+        }
+
+        button {
+            background-color: #d2dfff;
+            color: white;
+            padding: 10px 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #355CBD;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h2>Список </h2>
+        <div class="nav-button">
+            <a href="{% url 'main_page' %}">На главную</a>
+        </div>
+        <img src="{% static 'images/comfort.png' %}" alt="Логотип" class="logo">
+    </header>
+
+    <div class="content-wrapper">
+        <div class="main-container">
+            {% for p in products %}
+            <div class="products-card">
+                <div class="products-info">
+                    <div><strong>{{ p.type.name }}</strong> | <strong>{{ p.name.name }}</strong></div>
+                    <div>Артикул: {{ p.article }}</div>
+                    <div>Минимальная стоимость для партнёра: {{ p.min_cost }}</div>
+                    <div>Основной материал: {{ p.material.name }}</div>
+                </div>
+                <div class="get_time">
+                    <div>Время изготовления: {{ p.get_time }}</div>
+                </div>
+            </div>
+            {% empty %}
+                <p>Нет данных о партнёрах.</p>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>
+

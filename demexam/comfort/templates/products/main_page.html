@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Мастер пол — Панель управления</title>
+    {% load static %}
+    <link rel="icon" href="{% static 'images/comfort.ico' %}" type="image/x-icon">
+    <style>
+        body {
+            margin: 0;
+            font-family: Candara, regular;
+            background-color: #fefefe;
+        }
+
+        header {
+            background-color: #F4E8D3;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 30px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        header img {
+            height: 40px;
+        }
+
+        h1 {
+            font-size: 20px;
+            color: #333;
+        }
+
+        .container {
+            padding: 40px;
+            text-align: center;
+        }
+
+        .btn {
+            display: inline-block;
+            margin: 20px;
+            padding: 15px 30px;
+            background-color: #D2DFFF;
+            color: white;
+            font-size: 16px;
+            text-decoration: none;
+            border-radius: 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #355CBD;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Панель управления партнёрами</h1>
+        <img src="{% static 'images/comfort.png' %}" alt="Логотип компании">
+    </header>
+
+    <div class="container">
+        <a href="{% url 'products_list' %}" class="btn">Проссмотр партнёров</a>
+    </div>
+</body>
+</html>
